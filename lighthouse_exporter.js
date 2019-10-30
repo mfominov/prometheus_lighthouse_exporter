@@ -8,6 +8,14 @@ const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 const minimist = require('minimist');
 var Mutex = require('async-mutex').Mutex;
+const lh_settings = 
+{
+    settings: 
+    {
+        onlyCategories: ['performance'],
+        emulatedFormFactor: 'desktop'
+     }
+};
 
 var argv = minimist(process.argv.slice(2));
 
@@ -37,7 +45,8 @@ http.createServer(async (req, res) => {
 
             await lighthouse(target, {
                 port: url.parse(browser.wsEndpoint()).port,
-                output: 'json'
+                output: 'json',
+                lh_settings
             })
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
