@@ -31,14 +31,14 @@ http.createServer(async (req, res) => {
 
         try{
             const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
-            
+
             data.push('# HELP LH_exporter fork version 0.1a');
             data.push('# HELP lighthouse_exporter_info Exporter Info');
             data.push('# TYPE lighthouse_exporter_info gauge');
             data.push(`lighthouse_exporter_info{version="0.2.4",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
 
-            await lighthouse(target, 
-                             {port: url.parse(browser.wsEndpoint()).port,output: 'json'}, 
+            await lighthouse(target,
+                             {port: url.parse(browser.wsEndpoint()).port,output: 'json'},
                              config)
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
