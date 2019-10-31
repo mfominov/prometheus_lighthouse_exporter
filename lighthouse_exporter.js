@@ -8,14 +8,7 @@ const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 const minimist = require('minimist');
 var Mutex = require('async-mutex').Mutex;
-const lh_settings = 
-{
-    settings: 
-    {
-        onlyCategories: ['performance'],
-        emulatedFormFactor: 'desktop'
-     }
-};
+const config = require('./path/to/custom-config.js');
 
 var argv = minimist(process.argv.slice(2));
 
@@ -43,11 +36,9 @@ http.createServer(async (req, res) => {
             data.push('# TYPE lighthouse_exporter_info gauge');
             data.push(`lighthouse_exporter_info{version="0.2.4",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
 
-            await lighthouse(target, {
-                port: url.parse(browser.wsEndpoint()).port,
-                output: 'json',
-                lh_settings
-            })
+            await lighthouse(target, 
+                             {port: url.parse(browser.wsEndpoint()).port,output: 'json'}, 
+                             config)
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
                     data.push('# TYPE lighthouse_score gauge');
