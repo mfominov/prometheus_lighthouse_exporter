@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 const minimist = require('minimist');
 var Mutex = require('async-mutex').Mutex;
-const config = require('./path/to/custom-config.js');
+const config = require('./lh-custom-config.js');
 
 var argv = minimist(process.argv.slice(2));
 
