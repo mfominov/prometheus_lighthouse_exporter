@@ -23,4 +23,4 @@ EXPOSE 9593
 # https://github.com/Yelp/dumb-init
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["npm run start"]
+CMD ["npm", "run", "start"]
