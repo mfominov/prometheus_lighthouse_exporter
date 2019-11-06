@@ -12,8 +12,8 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     && rm -rf /var/lib/apt/lists/*
 
 # RUN npm i -g prometheus_lighthouse_exporter --unsafe-perm
-# ADD package.json .
-# RUN npm install
+ADD package.json .
+RUN npm install
 ADD *.js /usr/src/app/
 
 EXPOSE 9593
