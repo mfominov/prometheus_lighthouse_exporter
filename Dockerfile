@@ -14,8 +14,8 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 # RUN npm i -g lvolfman/prometheus_lighthouse_exporter --unsafe-perm
 ADD package.json .
 RUN npm install
-install --y chromium-browser
-npm install -g lighthouse
+RUN apt-get install -y chromium-browser
+RUN npm install -g lighthouse
 ADD *.js /usr/src/app/
 
 EXPOSE 9593
