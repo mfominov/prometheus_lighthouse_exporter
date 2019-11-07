@@ -1,6 +1,6 @@
 {
   "name": "prometheus_lighthouse_exporter",
-  "version": "0.2.4",
+  "version": "0.2.7",
   "description": "",
   "main": "lighthouse_exporter.js",
   "scripts": {
@@ -15,11 +15,11 @@
   "bin": {
     "lighthouse_exporter": "./lighthouse_exporter.js"
   },
-  "author": "Philipp Keschl",
+  "author": "Lev Volfman",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pkesc/prometheus_lighthouse_exporter"
+    "url": "https://github.com/lvolfman/prometheus_lighthouse_exporter"
   },
   "dependencies": {
     "async-mutex": "^0.1.3",
