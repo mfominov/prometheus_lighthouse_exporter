@@ -23,5 +23,5 @@ EXPOSE 9593
 # https://github.com/Yelp/dumb-init
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-#CMD ["lighthouse_exporter"]
-CMD ["npm", "run", "start"]
+CMD ["lighthouse_exporter"]
+#CMD ["npm", "run", "start"]
