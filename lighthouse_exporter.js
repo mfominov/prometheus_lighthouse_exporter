@@ -9,7 +9,6 @@ const lighthouse = require('lighthouse');
 const minimist = require('minimist');
 var Mutex = require('async-mutex').Mutex;
 const config = require('./lh-custom-config.js');
-data.push(`#${config}`);
 
 var argv = minimist(process.argv.slice(2));
 
