@@ -11,7 +11,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-RUN npm i -g prometheus_lighthouse_exporter --unsafe-perm
+#RUN npm i -g prometheus_lighthouse_exporter --unsafe-perm
 ADD package.json .
 RUN npm install
 ADD *.js /usr/src/app/
@@ -23,5 +23,5 @@ EXPOSE 9593
 # https://github.com/Yelp/dumb-init
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["lighthouse_exporter"]
-#CMD ["npm", "run", "start"]
+#CMD ["lighthouse_exporter"]
+CMD ["npm", "run", "start"]
