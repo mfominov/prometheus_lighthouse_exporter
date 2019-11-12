@@ -10,6 +10,7 @@ const chromeLauncher = require('chrome-launcher');
 const minimist = require('minimist');
 var Mutex = require('async-mutex').Mutex;
 const config = require('./lh-custom-config.js');
+const opts = {  chromeFlags: ['--show-paint-rects']};
 
 var argv = minimist(process.argv.slice(2));
 
@@ -51,7 +52,7 @@ http.createServer(async (req, res) => {
             data.push('# TYPE lighthouse_exporter_info gauge');
             data.push(`lighthouse_exporter_info{version="0.2.9",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
 
-            launchChromeAndRunLighthouse(target, config)
+            launchChromeAndRunLighthouse(target, opts, config)
             /**
             await lighthouse(target, 
                              {port: url.parse(browser.wsEndpoint()).port,output: 'json'}, 
