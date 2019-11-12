@@ -50,7 +50,7 @@ http.createServer(async (req, res) => {
             data.push('# HELP LH_exporter fork version 0.2.9');
             data.push('# HELP lighthouse_exporter_info Exporter Info');
             data.push('# TYPE lighthouse_exporter_info gauge');
-            data.push(`lighthouse_exporter_info{version="0.2.9",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
+            //data.push(`lighthouse_exporter_info{version="0.2.9",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
 
             launchChromeAndRunLighthouse(target, opts, config)
             /**
@@ -64,8 +64,8 @@ http.createServer(async (req, res) => {
 
                     for(var category in results.lhr.categories){
                         var item = results.lhr.categories[category];
-
-                        data.push(`lighthouse_score{category="${category}"} ${item.score * 100}`);
+                        data.push(results);
+                        \\data.push(`lighthouse_score{category="${category}"} ${item.score * 100}`);
                     }
 
                     var audits = results.lhr.audits;
