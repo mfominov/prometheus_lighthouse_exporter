@@ -2,6 +2,7 @@
 /** @type {LH.Config.Json} */
 const config = {
   settings: {
+    onlyCategories: ['performance'],
     maxWaitForFcp: 15 * 1000,
     maxWaitForLoad: 35 * 1000,
     emulatedFormFactor: 'desktop',
