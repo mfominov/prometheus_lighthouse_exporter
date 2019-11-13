@@ -1,12 +1,12 @@
 'use strict';
 /** @type {LH.Config.Json} */
 const config = {
-  extends: 'lighthouse:desktop',
+  extends: 'lighthouse:mobile',
   settings: {
     onlyCategories: ['performance'],
     maxWaitForFcp: 15 * 1000,
     maxWaitForLoad: 35 * 1000,
-    emulatedFormFactor: 'desktop',
+    emulatedFormFactor: 'mobile',
     /**throttling: {
       rttMs: 40,
       throughputKbps: 10 * 1024,
