@@ -1,6 +1,7 @@
 'use strict';
 /** @type {LH.Config.Json} */
 const config = {
+  extends: 'lighthouse:desktop',
   settings: {
     onlyCategories: ['performance'],
     maxWaitForFcp: 15 * 1000,
