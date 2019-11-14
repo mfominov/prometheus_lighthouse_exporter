@@ -1,22 +1,12 @@
 'use strict';
 /** @type {LH.Config.Json} */
-const config = {
+module.exports = {
   extends: 'lighthouse:Default',
   settings: {
-    onlyCategories: ['performance'],
-    maxWaitForFcp: 15 * 1000,
-    maxWaitForLoad: 35 * 1000,
     emulatedFormFactor: 'desktop',
-    /**throttling: {
-      rttMs: 40,
-      throughputKbps: 10 * 1024,
-      cpuSlowdownMultiplier: 1,
-    },
-    Skip the h2 audit so it doesn't lie to us. See https://github.com/GoogleChrome/lighthouse/issues/6539
-    skipAudits: ['uses-http2'],*/
+	throttlingMethod: 'provided',
   },
 };
-module.exports = config;
 
 /**
 module.exports = {
