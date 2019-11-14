@@ -31,11 +31,11 @@ http.createServer(async (req, res) => {
 
         try{
             const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
-
-            data.push('# HELP LH_exporter fork version 0.1a');
+            
+            data.push('# HELP LH_exporter fork version 0.2.9');
             data.push('# HELP lighthouse_exporter_info Exporter Info');
             data.push('# TYPE lighthouse_exporter_info gauge');
-            data.push(`lighthouse_exporter_info{version="0.2.5",chrome_version="${await browser.version()}",node_version="${process.version}"} 1`);
+            data.push(`lighthouse_exporter_info{version="0.2.9",chrome_version="${await browser.version()}",node_version="${process.version}"}`);
 
             await lighthouse(target,
                              {port: url.parse(browser.wsEndpoint()).port,output: 'json'},
@@ -43,7 +43,7 @@ http.createServer(async (req, res) => {
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
                     data.push('# TYPE lighthouse_score gauge');
-
+                
                     for(var category in results.lhr.categories){
                         var item = results.lhr.categories[category];
 
