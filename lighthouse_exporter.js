@@ -43,7 +43,7 @@ http.createServer(async (req, res) => {
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
                     data.push('# TYPE lighthouse_score gauge');
-                    var results_string = results.stringify();
+                    var results_string = JSON.stringify(results.lhr);
                     data.push(`LightHouse Version ${results_string}`);
 
                     for(var category in results.lhr.categories){
