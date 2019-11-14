@@ -37,8 +37,8 @@ http.createServer(async (req, res) => {
             data.push('# TYPE lighthouse_exporter_info gauge');
             data.push(`lighthouse_exporter_info{version="0.2.9",chrome_version="${await browser.version()}",node_version="${process.version}"}`);
 
-            await lighthouse(target, 
-                             {port: url.parse(browser.wsEndpoint()).port,output: 'json'}, 
+            await lighthouse(target,
+                             {port: url.parse(browser.wsEndpoint()).port,output: 'json'},
                              config)
                 .then(results => {
                     data.push('# HELP lighthouse_score The Score per Category');
